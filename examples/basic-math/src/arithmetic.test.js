@@ -21,9 +21,20 @@ describe('add', () => {
   });
 });
 
-describe.todo('subtract', () => {
+describe('subtract', () => {
   it('should subtract two numbers', () => {
     expect(subtract(5, 3)).toBe(2);
+  });
+  it('should accept and subtract all of the numbers', () => {
+    expect(subtract([10, 5], 2)).toBe(3);
+  });
+  it('should default undefined values to 0', () => {
+    expect(subtract(3)).toBe(3);
+    expect(subtract(undefined, 3)).toBe(-3);
+  });
+  it('should default to zero if either argument is null', () => {
+    expect(subtract(null, 3)).toBe(-3);
+    expect(subtract(3, null)).toBe(3);
   });
 });
 
@@ -33,8 +44,11 @@ describe.todo('multiply', () => {
   });
 });
 
-describe.todo('divide', () => {
+describe('divide', () => {
   it('should divide two numbers', () => {
     expect(divide(9, 3)).toBe(3);
+  });
+  it('should handle infinite division', () => {
+    expect(divide(3, 0)).toBe('infinite');
   });
 });
